@@ -25,7 +25,7 @@ public class Avaliacao {
     private Long idAvaliacao;
     @ManyToOne
     @JoinColumn(name = "ID_CANDIDATO", nullable = false)
-    private Candidato candidato;
+    private Candidato idCandidato;
     @Column(name = "DATA", nullable = false)
     private LocalDateTime data;
     @Column(name = "APTO", nullable = false)

@@ -31,7 +31,7 @@ public class Regra {
     private Setor setor;
     @Column(name = "SENIORIDADE", nullable = false)
     private Senioridade senioridade;
-    @Column(name = "EXPERIENCIA_MINIMA", nullable = false)
+    @Column(name = "EXPERIENCIA_MINIMA")
     private Integer experienciaMinima;
     @ManyToMany
     @JoinTable(
