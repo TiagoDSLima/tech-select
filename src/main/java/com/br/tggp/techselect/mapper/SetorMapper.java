@@ -5,6 +5,9 @@ import com.br.tggp.techselect.dto.SetorResponse;
 import com.br.tggp.techselect.model.Recrutador;
 import com.br.tggp.techselect.model.Setor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class SetorMapper {
 
     public static Setor toEntity(SetorRequest dto) {
@@ -26,5 +29,13 @@ public class SetorMapper {
                 entity.getNome(),
                 entity.getRecrutador().getIdRecrutador()
         );
+    }
+
+    public static List<SetorResponse> toListResponse(List<Setor> entities) {
+        if (entities == null) return null;
+
+        return entities.stream()
+                .map(SetorMapper::toResponse)
+                .toList();
     }
 }
