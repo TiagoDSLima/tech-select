@@ -17,3 +17,14 @@ spring:
 
 server:
   port: 8080
+
+api:
+  security:
+    token:
+      secret: ${JWT_SECRET:tech-select}
+
+minio:
+  url: http://localhost:9100
+  access-key: minioadmin
+  secret-key: minioadmin
+  bucket: techselect
