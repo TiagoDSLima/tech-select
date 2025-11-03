@@ -18,7 +18,8 @@ public class CandidaturaService {
     private final MinioService minioService;
     private final RecrutadorService recrutadorService;
 
-    public CandidaturaResponse criarCandidatura(CandidaturaRequest candidaturaRequest) throws Exception {
+    public CandidaturaResponse criarCandidatura(CandidaturaRequest candidaturaRequest){
+        try {
             Candidatura candidatura = CandidaturaMapper.toEntity(candidaturaRequest);
             candidatura = candidaturaRepository.save(candidatura);
 
@@ -26,6 +27,9 @@ public class CandidaturaService {
             String urlImagem = minioService.subirArquivo(nomeObjeto, candidaturaRequest.getUrlCurriculo().getInputStream(), candidaturaRequest.getUrlCurriculo().getContentType());
             candidatura.setUrlCurriculo(urlImagem);
             return CandidaturaMapper.toResponse(candidaturaRepository.save(candidatura));
+        } catch (Exception e) {
+            throw new RuntimeException("Erro ao criar candidatura: ", e);
+        }
     }
 
     public List<CandidaturaResponse> listarCandidaturas(Long idRecrutador){

@@ -2,6 +2,7 @@ package com.br.tggp.techselect.service;
 
 import com.br.tggp.techselect.dto.VagaRequest;
 import com.br.tggp.techselect.dto.VagaResponse;
+import com.br.tggp.techselect.mapper.CandidaturaMapper;
 import com.br.tggp.techselect.mapper.VagaMapper;
 import com.br.tggp.techselect.model.Setor;
 import com.br.tggp.techselect.model.Skill;
@@ -29,6 +30,18 @@ public class VagaService {
         Vaga vaga = VagaMapper.toEntity(vagaRequest);
         return VagaMapper.toResponse(vagaRepository.save(vaga));
 
+    }
+
+    public List<VagaResponse> listarVagas(Long idRecrutador) {
+        if(idRecrutador == null || !recrutadorService.existeRecrutador(idRecrutador)) {
+            throw new IllegalArgumentException("Recrutador inexistente");
+        }
+
+        List<Vaga> vagas = vagaRepository.findByRecrutador_IdRecrutador(idRecrutador);
+
+        return vagas.stream()
+                .map(VagaMapper::toResponse)
+                .toList();
     }
 
     public VagaResponse atualizarVaga(VagaRequest vagaRequest, Long idVaga) {

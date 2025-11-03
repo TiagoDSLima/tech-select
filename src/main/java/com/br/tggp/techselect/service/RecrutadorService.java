@@ -20,20 +20,25 @@ public class RecrutadorService {
     private final RecrutadorRepository recrutadorRepository;
     private final MinioService minioService;
 
-    public RecrutadorResponse criarRecrutador(RecrutadorRequest recrutadorRequest) throws Exception {
+    public RecrutadorResponse criarRecrutador(RecrutadorRequest recrutadorRequest) {
 
-        if(recrutadorRepository.findByEmail(recrutadorRequest.getEmail()) != null) throw new IllegalArgumentException("Email já cadastrado!");
+        try {
+            if (recrutadorRepository.findByEmail(recrutadorRequest.getEmail()) != null)
+                throw new IllegalArgumentException("Email já cadastrado!");
 
-        String senhaEncriptada = new BCryptPasswordEncoder().encode(recrutadorRequest.getSenha());
-        recrutadorRequest.setSenha(senhaEncriptada);
+            String senhaEncriptada = new BCryptPasswordEncoder().encode(recrutadorRequest.getSenha());
+            recrutadorRequest.setSenha(senhaEncriptada);
 
-        Recrutador recrutador = RecrutadorMapper.toEntity(recrutadorRequest);
-        recrutador = recrutadorRepository.save(recrutador);
+            Recrutador recrutador = RecrutadorMapper.toEntity(recrutadorRequest);
+            recrutador = recrutadorRepository.save(recrutador);
 
-        String nomeObjeto = "logos/" + recrutador.getIdRecrutador() + "_" + recrutadorRequest.getUrlLogo().getOriginalFilename();
-        String urlImagem = minioService.subirArquivo(nomeObjeto, recrutadorRequest.getUrlLogo().getInputStream(), recrutadorRequest.getUrlLogo().getContentType());
-        recrutador.setUrlLogo(urlImagem);
-        return RecrutadorMapper.toResponse(recrutadorRepository.save(recrutador));
+            String nomeObjeto = "logos/" + recrutador.getIdRecrutador() + "_" + recrutadorRequest.getUrlLogo().getOriginalFilename();
+            String urlImagem = minioService.subirArquivo(nomeObjeto, recrutadorRequest.getUrlLogo().getInputStream(), recrutadorRequest.getUrlLogo().getContentType());
+            recrutador.setUrlLogo(urlImagem);
+            return RecrutadorMapper.toResponse(recrutadorRepository.save(recrutador));
+        } catch(Exception e){
+            throw new RuntimeException("Erro ao criar recrutador: ", e);
+        }
     }
 
     public UserDetails buscarPorEmail(String email){

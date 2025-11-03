@@ -36,11 +36,7 @@ public class AuthenticationController {
 
     @PostMapping("/register")
     public ResponseEntity register(@RequestBody @Valid RecrutadorRequest recrutadorRequest){
-        try {
-            recrutadorService.criarRecrutador(recrutadorRequest);
-            return ResponseEntity.ok().build();
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().build();
-        }
+        recrutadorService.criarRecrutador(recrutadorRequest);
+        return ResponseEntity.ok().build();
     }
 }
