@@ -1,6 +1,7 @@
 package com.br.tggp.techselect.model;
 
 import com.br.tggp.techselect.enums.NivelExp;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -14,6 +15,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -35,6 +37,11 @@ public class Vaga {
     private Long idVaga;
 
     @NotNull
+    @Size(max = 100)
+    @Column(name = "titulo_vaga", nullable = false, length = 100)
+    private String tituloVaga;
+
+    @NotNull
     @Enumerated(EnumType.STRING)
     @Column(name = "nivel", nullable = false)
     private NivelExp nivel;
@@ -52,9 +59,14 @@ public class Vaga {
     @JoinColumn(name = "id_recrutador", nullable = false)
     private Recrutador recrutador;
 
+    @NotNull
+    @ManyToOne
+    @JoinColumn(name = "id_setor", nullable = false)
+    private Setor setor;
+
     @OneToMany(mappedBy = "vaga")
     private List<Candidatura> candidaturas;
 
-    @OneToMany(mappedBy = "vaga")
+    @OneToMany(mappedBy = "vaga", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Skill> skills;
 }

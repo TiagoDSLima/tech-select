@@ -13,6 +13,7 @@ import java.util.List;
 public class CandidaturaResponse {
 
     private Long idCandidatura;
+    private String nomeCompleto;
     private String email;
     private String telefone;
     private Integer exp;
@@ -21,10 +22,11 @@ public class CandidaturaResponse {
     private List<SkillResponse> skills;
     private Apto apto;
 
-    public CandidaturaResponse(Long idCandidatura, String email, String telefone,
+    public CandidaturaResponse(Long idCandidatura, String nomeCompleto, String email, String telefone,
                                Integer exp, String urlCurriculo, Long idVaga,
                                List<SkillResponse> skills) {
         this.idCandidatura = idCandidatura;
+        this.nomeCompleto = nomeCompleto;
         this.email = email;
         this.telefone = telefone;
         this.exp = exp;

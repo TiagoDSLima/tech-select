@@ -3,6 +3,7 @@ package com.br.tggp.techselect.mapper;
 import com.br.tggp.techselect.dto.CandidaturaRequest;
 import com.br.tggp.techselect.dto.CandidaturaResponse;
 import com.br.tggp.techselect.dto.SkillResponse;
+import com.br.tggp.techselect.enums.NivelSkill;
 import com.br.tggp.techselect.model.Candidatura;
 import com.br.tggp.techselect.model.Skill;
 import com.br.tggp.techselect.model.Vaga;
@@ -16,6 +17,7 @@ public class CandidaturaMapper {
         if (dto == null) return null;
 
         Candidatura c = new Candidatura();
+        c.setNomeCompleto(dto.getNomeCompleto());
         c.setEmail(dto.getEmail());
         c.setTelefone(dto.getTelefone());
         c.setExp(dto.getExp());
@@ -28,6 +30,7 @@ public class CandidaturaMapper {
                         Skill skill = new Skill();
                         skill.setDescricao(skillDto.getDescricao());
                         skill.setNivel(skillDto.getNivel());
+                        skill.setNivel(NivelSkill.CANDIDATURA);
                         skill.setCandidatura(c);
                         return skill;
                     })
@@ -57,6 +60,7 @@ public class CandidaturaMapper {
 
         return new CandidaturaResponse(
                 entity.getIdCandidatura(),
+                entity.getNomeCompleto(),
                 entity.getEmail(),
                 entity.getTelefone(),
                 entity.getExp(),

@@ -1,6 +1,7 @@
 package com.br.tggp.techselect.service;
 
 import com.br.tggp.techselect.dto.RecrutadorRequest;
+import com.br.tggp.techselect.dto.RecrutadorResponse;
 import com.br.tggp.techselect.mapper.RecrutadorMapper;
 import com.br.tggp.techselect.model.Recrutador;
 import com.br.tggp.techselect.repository.RecrutadorRepository;
@@ -19,7 +20,7 @@ public class RecrutadorService {
     private final RecrutadorRepository recrutadorRepository;
     private final MinioService minioService;
 
-    public void criarRecrutador(RecrutadorRequest recrutadorRequest) throws Exception {
+    public RecrutadorResponse criarRecrutador(RecrutadorRequest recrutadorRequest) throws Exception {
 
         if(recrutadorRepository.findByEmail(recrutadorRequest.getEmail()) != null) throw new IllegalArgumentException("Email já cadastrado!");
 
@@ -32,7 +33,7 @@ public class RecrutadorService {
         String nomeObjeto = "logos/" + recrutador.getIdRecrutador() + "_" + recrutadorRequest.getUrlLogo().getOriginalFilename();
         String urlImagem = minioService.subirArquivo(nomeObjeto, recrutadorRequest.getUrlLogo().getInputStream(), recrutadorRequest.getUrlLogo().getContentType());
         recrutador.setUrlLogo(urlImagem);
-        recrutadorRepository.save(recrutador);
+        return RecrutadorMapper.toResponse(recrutadorRepository.save(recrutador));
     }
 
     public UserDetails buscarPorEmail(String email){

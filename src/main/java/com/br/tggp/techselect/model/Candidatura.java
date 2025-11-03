@@ -34,6 +34,11 @@ public class Candidatura {
     private Long idCandidatura;
 
     @NotBlank
+    @Size(max = 150)
+    @Column(name = "nome_completo", nullable = false, length = 150)
+    private String nomeCompleto;
+
+    @NotBlank
     @Email
     @Size(max = 100)
     @Column(name = "email", nullable = false, length = 100)

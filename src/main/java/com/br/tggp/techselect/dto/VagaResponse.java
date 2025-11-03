@@ -13,9 +13,11 @@ import java.util.List;
 public class VagaResponse {
 
     private Long idVaga;
+    private String tituloVaga;
     private NivelExp nivel;
     private Integer expMin;
     private String descricao;
     private Long idRecrutador;
+    private SetorResponse setor;
     private List<SkillResponse> skills;
 }

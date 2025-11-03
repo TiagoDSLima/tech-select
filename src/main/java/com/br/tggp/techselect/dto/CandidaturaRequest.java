@@ -23,6 +23,10 @@ public class CandidaturaRequest {
     private String email;
 
     @NotBlank
+    @Size(max = 150)
+    private String nomeCompleto;
+
+    @NotBlank
     @Size(max = 11)
     private String telefone;
 

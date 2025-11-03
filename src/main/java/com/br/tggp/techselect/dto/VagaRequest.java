@@ -16,6 +16,10 @@ import java.util.List;
 public class VagaRequest {
 
     @NotNull
+    @Size(max = 100)
+    private String tituloVaga;
+
+    @NotNull
     private NivelExp nivel;
 
     @NotNull
@@ -27,6 +31,9 @@ public class VagaRequest {
 
     @NotNull
     private Long idRecrutador;
+
+    @NotNull
+    private Long idSetor;
 
     @NotNull
     private List<SkillRequest> skills;
