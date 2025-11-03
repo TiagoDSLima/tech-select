@@ -16,10 +16,10 @@ import java.util.List;
 public class SetorService {
 
     private final SetorRepository setorRepository;
-    private final RecrutadorRepository recrutadorRepository;
+    private final RecrutadorService recrutadorService;
 
     public SetorResponse criarSetor(SetorRequest setorRequest){
-        if(setorRequest.getIdRecrutador() == null || !recrutadorRepository.existsById(setorRequest.getIdRecrutador())) {
+        if(setorRequest.getIdRecrutador() == null || !recrutadorService.existeRecrutador(setorRequest.getIdRecrutador())) {
             throw new IllegalArgumentException("Recrutador inexistente");
         }
         Setor setor = SetorMapper.toEntity(setorRequest);
@@ -34,7 +34,7 @@ public class SetorService {
     }
 
     public List<SetorResponse> listarSetores(Long idRecrutador){
-        if(idRecrutador == null || !recrutadorRepository.existsById(idRecrutador)) {
+        if(idRecrutador == null || !recrutadorService.existeRecrutador(idRecrutador)) {
             throw new IllegalArgumentException("Recrutador inexistente");
         }
 

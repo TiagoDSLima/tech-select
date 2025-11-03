@@ -38,4 +38,8 @@ public class RecrutadorService {
     public UserDetails buscarPorEmail(String email){
         return recrutadorRepository.findByEmail(email);
     }
+
+    public boolean existeRecrutador(Long id){
+        return recrutadorRepository.existsById(id);
+    }
 }
