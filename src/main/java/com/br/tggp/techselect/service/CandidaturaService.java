@@ -22,7 +22,7 @@ public class CandidaturaService {
             Candidatura candidatura = CandidaturaMapper.toEntity(candidaturaRequest);
             candidatura = candidaturaRepository.save(candidatura);
 
-            String nomeObjeto = "logos/" + candidatura.getIdCandidatura() + "_" + candidaturaRequest.getUrlCurriculo().getOriginalFilename();
+            String nomeObjeto = "curriculos/" + candidatura.getIdCandidatura() + "_" + candidaturaRequest.getUrlCurriculo().getOriginalFilename();
             String urlImagem = minioService.subirArquivo(nomeObjeto, candidaturaRequest.getUrlCurriculo().getInputStream(), candidaturaRequest.getUrlCurriculo().getContentType());
             candidatura.setUrlCurriculo(urlImagem);
             return CandidaturaMapper.toResponse(candidaturaRepository.save(candidatura));
