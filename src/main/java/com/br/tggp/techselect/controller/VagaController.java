@@ -42,7 +42,7 @@ public class VagaController {
         return ResponseEntity.status(HttpStatus.OK).body(vagaResponse);
     }
 
-    @DeleteMapping
+    @DeleteMapping("/{idVaga}")
     private ResponseEntity deletarVaga(@PathVariable Long idVaga) {
         vagaService.deletarVaga(idVaga);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
