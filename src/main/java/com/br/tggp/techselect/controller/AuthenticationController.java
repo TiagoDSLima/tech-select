@@ -9,9 +9,11 @@ import com.br.tggp.techselect.service.TokenService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,8 +38,8 @@ public class AuthenticationController {
         return ResponseEntity.ok(new LoginResponse(recrutador.getIdRecrutador(), token));
     }
 
-    @PostMapping("/register")
-    public ResponseEntity<RecrutadorResponse> register(@RequestBody @Valid RecrutadorRequest recrutadorRequest){
+    @PostMapping(value = "/register", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<RecrutadorResponse> register(@ModelAttribute @Valid RecrutadorRequest recrutadorRequest){
         RecrutadorResponse recrutadorResponse = recrutadorService.criarRecrutador(recrutadorRequest);
         return ResponseEntity.status(HttpStatus.CREATED).body(recrutadorResponse);
     }

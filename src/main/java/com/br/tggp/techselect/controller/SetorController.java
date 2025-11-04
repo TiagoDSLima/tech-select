@@ -4,6 +4,7 @@ import com.br.tggp.techselect.dto.SetorRequest;
 import com.br.tggp.techselect.dto.SetorResponse;
 import com.br.tggp.techselect.model.Setor;
 import com.br.tggp.techselect.service.SetorService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
@@ -26,7 +27,7 @@ public class SetorController {
     private final SetorService setorService;
 
     @PostMapping
-    public ResponseEntity<SetorResponse> criarSetor(@RequestBody SetorRequest setorRequest){
+    public ResponseEntity<SetorResponse> criarSetor(@RequestBody @Valid SetorRequest setorRequest){
         SetorResponse setorResponse = setorService.criarSetor(setorRequest);
         return ResponseEntity.status(HttpStatus.CREATED).body(setorResponse);
     }
