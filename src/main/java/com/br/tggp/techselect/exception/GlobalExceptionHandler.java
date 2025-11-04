@@ -1,6 +1,7 @@
 package com.br.tggp.techselect.exception;
 
 import com.br.tggp.techselect.dto.ErroResponse;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -34,6 +35,16 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(RuntimeException.class)
     public ResponseEntity<ErroResponse> handleRuntimeException(RuntimeException ex) {
+        ErroResponse erro = new ErroResponse(
+                ex.getMessage(),
+                HttpStatus.BAD_REQUEST.value(),
+                LocalDateTime.now()
+        );
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(erro);
+    }
+
+    @ExceptionHandler(EntityNotFoundException.class)
+    public ResponseEntity<ErroResponse> handleEntityNotFoundException(EntityNotFoundException ex) {
         ErroResponse erro = new ErroResponse(
                 ex.getMessage(),
                 HttpStatus.BAD_REQUEST.value(),

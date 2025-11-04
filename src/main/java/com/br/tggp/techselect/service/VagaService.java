@@ -22,6 +22,12 @@ public class VagaService {
     private final VagaRepository vagaRepository;
     private final RecrutadorService recrutadorService;
 
+    public VagaResponse buscarVaga(Long idVaga){
+        return vagaRepository.findById(idVaga)
+                .map(VagaMapper::toResponse)
+                .orElseThrow(() -> new IllegalArgumentException("Vaga inexistente"));
+    }
+
     public VagaResponse cadastrarVaga(VagaRequest vagaRequest) {
         if(vagaRequest.getIdRecrutador() == null || !recrutadorService.existeRecrutador(vagaRequest.getIdRecrutador())) {
             throw new IllegalArgumentException("Recrutador inexistente");
