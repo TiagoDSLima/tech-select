@@ -2,11 +2,13 @@ package com.br.tggp.techselect.controller;
 
 import com.br.tggp.techselect.dto.LoginResponse;
 import com.br.tggp.techselect.dto.RecrutadorRequest;
+import com.br.tggp.techselect.dto.RecrutadorResponse;
 import com.br.tggp.techselect.model.Recrutador;
 import com.br.tggp.techselect.service.RecrutadorService;
 import com.br.tggp.techselect.service.TokenService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -35,8 +37,8 @@ public class AuthenticationController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity register(@RequestBody @Valid RecrutadorRequest recrutadorRequest){
-        recrutadorService.criarRecrutador(recrutadorRequest);
-        return ResponseEntity.ok().build();
+    public ResponseEntity<RecrutadorResponse> register(@RequestBody @Valid RecrutadorRequest recrutadorRequest){
+        RecrutadorResponse recrutadorResponse = recrutadorService.criarRecrutador(recrutadorRequest);
+        return ResponseEntity.status(HttpStatus.CREATED).body(recrutadorResponse);
     }
 }
