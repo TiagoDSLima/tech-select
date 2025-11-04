@@ -12,7 +12,7 @@ services:
     ports:
       - "5556:5432"
     volumes:
-      - ./data:/var/lib/postgresql/data
+      - ./data/postgresql:/var/lib/postgresql/data
   minio:
     image: minio/minio:latest
     container_name: tech-select-minio
