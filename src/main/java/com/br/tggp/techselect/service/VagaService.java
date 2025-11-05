@@ -46,9 +46,7 @@ public class VagaService {
 
         List<Vaga> vagas = vagaRepository.findByRecrutador_IdRecrutador(idRecrutador);
 
-        return vagas.stream()
-                .map(VagaMapper::toResponse)
-                .toList();
+        List<VagaResponse> vagasResponse = VagaMapper.toListResponse(vagas);
     }
 
     public VagaResponse atualizarVaga(VagaRequest vagaRequest, Long idVaga) {

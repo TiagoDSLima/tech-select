@@ -4,14 +4,12 @@ import com.br.tggp.techselect.dto.SetorResponse;
 import com.br.tggp.techselect.dto.SkillResponse;
 import com.br.tggp.techselect.dto.VagaRequest;
 import com.br.tggp.techselect.dto.VagaResponse;
-import com.br.tggp.techselect.enums.NivelSkill;
 import com.br.tggp.techselect.model.Recrutador;
 import com.br.tggp.techselect.model.Setor;
 import com.br.tggp.techselect.model.Skill;
 import com.br.tggp.techselect.model.Vaga;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class VagaMapper {
 
@@ -44,7 +42,7 @@ public class VagaMapper {
 
         SetorResponse setorResponse = SetorMapper.toResponse(entity.getSetor());
 
-        return new VagaResponse(
+        VagaResponse vagaResponse = new VagaResponse(
                 entity.getIdVaga(),
                 entity.getTituloVaga(),
                 entity.getNivel(),
@@ -54,5 +52,18 @@ public class VagaMapper {
                 setorResponse,
                 skills
         );
+
+        if(entity.getRecrutador() != null && entity.getRecrutador().getIdRecrutador() != null
+            && entity.getRecrutador().getUrlLogo() != null){
+            vagaResponse.setUrlLogo(entity.getRecrutador().getUrlLogo());
+        }
+
+        return vagaResponse;
+    }
+
+    public static List<VagaResponse> toListResponse(List<Vaga> entities) {
+        return entities.stream()
+                .map(VagaMapper::toResponse)
+                .toList();
     }
 }
