@@ -1,5 +1,6 @@
 package com.br.tggp.techselect.model;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -63,6 +64,6 @@ public class Candidatura {
     @JoinColumn(name = "id_vaga", nullable = false)
     private Vaga vaga;
 
-    @OneToMany(mappedBy = "candidatura")
+    @OneToMany(mappedBy = "candidatura", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Skill> skills;
 }

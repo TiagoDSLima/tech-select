@@ -4,8 +4,11 @@ import com.br.tggp.techselect.dto.SkillRequest;
 import com.br.tggp.techselect.dto.SkillResponse;
 import com.br.tggp.techselect.model.Candidatura;
 import com.br.tggp.techselect.model.Recrutador;
+import com.br.tggp.techselect.model.Setor;
 import com.br.tggp.techselect.model.Skill;
 import com.br.tggp.techselect.model.Vaga;
+
+import java.util.List;
 
 public class SkillMapper {
 
@@ -15,9 +18,6 @@ public class SkillMapper {
         Skill s = new Skill();
         s.setDescricao(dto.getDescricao());
         s.setNivel(dto.getNivel());
-        Recrutador r = new Recrutador();
-        r.setIdRecrutador(dto.getIdRecrutador());
-        s.setRecrutador(r);
         if(dto.getIdVaga() != null){
             Vaga v = new Vaga();
             v.setIdVaga(dto.getIdVaga());
@@ -38,9 +38,24 @@ public class SkillMapper {
                 entity.getIdSkill(),
                 entity.getDescricao(),
                 entity.getNivel(),
-                entity.getRecrutador().getIdRecrutador(),
                 entity.getVaga() != null ? entity.getVaga().getIdVaga() : null,
                 entity.getCandidatura() != null ? entity.getCandidatura().getIdCandidatura() : null
         );
+    }
+
+    public static List<Skill> toListEntity(List<SkillRequest> entities) {
+        if (entities == null) return null;
+
+        return entities.stream()
+                .map(SkillMapper::toEntity)
+                .toList();
+    }
+
+    public static List<SkillResponse> toListResponse(List<Skill> entities) {
+        if (entities == null) return null;
+
+        return entities.stream()
+                .map(SkillMapper::toResponse)
+                .toList();
     }
 }

@@ -41,11 +41,6 @@ public class Skill {
     @Column(name = "nivel", nullable = false)
     private NivelSkill nivel = NivelSkill.CANDIDATURA;
 
-    @NotNull
-    @ManyToOne
-    @JoinColumn(name = "id_recrutador", nullable = false)
-    private Recrutador recrutador;
-
     @ManyToOne
     @JoinColumn(name = "id_vaga")
     private Vaga vaga;

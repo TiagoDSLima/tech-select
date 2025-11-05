@@ -8,7 +8,6 @@ import com.br.tggp.techselect.enums.Apto;
 import com.br.tggp.techselect.enums.NivelSkill;
 import com.br.tggp.techselect.mapper.CandidaturaMapper;
 import com.br.tggp.techselect.model.Candidatura;
-import com.br.tggp.techselect.model.Vaga;
 import com.br.tggp.techselect.repository.CandidaturaRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

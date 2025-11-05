@@ -3,6 +3,7 @@ package com.br.tggp.techselect.service;
 import com.br.tggp.techselect.dto.VagaRequest;
 import com.br.tggp.techselect.dto.VagaResponse;
 import com.br.tggp.techselect.mapper.CandidaturaMapper;
+import com.br.tggp.techselect.mapper.SkillMapper;
 import com.br.tggp.techselect.mapper.VagaMapper;
 import com.br.tggp.techselect.model.Setor;
 import com.br.tggp.techselect.model.Skill;
@@ -64,15 +65,7 @@ public class VagaService {
 
         if (vagaRequest.getSkills() != null) {
             vagaExistente.getSkills().clear();
-            List<Skill> novasSkills = vagaRequest.getSkills().stream()
-                    .map(skillDto -> {
-                        Skill skill = new Skill();
-                        skill.setDescricao(skillDto.getDescricao());
-                        skill.setNivel(skillDto.getNivel());
-                        skill.setVaga(vagaExistente);
-                        return skill;
-                    })
-                    .collect(Collectors.toList());
+            List<Skill> novasSkills = SkillMapper.toListEntity(vagaRequest.getSkills());
             vagaExistente.getSkills().addAll(novasSkills);
         }
 

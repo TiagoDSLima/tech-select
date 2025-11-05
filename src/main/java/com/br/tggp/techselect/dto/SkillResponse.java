@@ -13,7 +13,6 @@ public class SkillResponse {
     private Long idSkill;
     private String descricao;
     private NivelSkill nivel;
-    private Long idRecrutador;
     private Long idVaga;
     private Long idCandidatura;
 }

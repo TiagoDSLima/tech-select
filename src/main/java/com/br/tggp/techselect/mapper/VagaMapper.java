@@ -24,15 +24,7 @@ public class VagaMapper {
         v.setExpMin(dto.getExpMin());
         v.setDescricao(dto.getDescricao());
         if (dto.getSkills() != null) {
-            List<Skill> skills = dto.getSkills().stream()
-                    .map(skillDto -> {
-                        Skill skill = new Skill();
-                        skill.setDescricao(skillDto.getDescricao());
-                        skill.setNivel(skillDto.getNivel());
-                        skill.setVaga(v);
-                        return skill;
-                    })
-                    .collect(Collectors.toList());
+            List<Skill> skills = SkillMapper.toListEntity(dto.getSkills());
             v.setSkills(skills);
         }
         Setor s = new Setor();
@@ -48,18 +40,7 @@ public class VagaMapper {
         if (entity == null) return null;
 
         List<SkillResponse> skills = null;
-        if (entity.getSkills() != null) {
-            skills = entity.getSkills().stream()
-                    .map(skill -> new SkillResponse(
-                            skill.getIdSkill(),
-                            skill.getDescricao(),
-                            skill.getNivel(),
-                            skill.getRecrutador().getIdRecrutador(),
-                            skill.getVaga() != null ? skill.getVaga().getIdVaga() : null,
-                            null
-                    ))
-                    .collect(Collectors.toList());
-        }
+        if (entity.getSkills() != null) skills = SkillMapper.toListResponse(entity.getSkills());
 
         SetorResponse setorResponse = SetorMapper.toResponse(entity.getSetor());
 

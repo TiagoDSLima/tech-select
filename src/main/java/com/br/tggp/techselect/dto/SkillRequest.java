@@ -17,13 +17,8 @@ public class SkillRequest {
     @NotBlank
     @Size(max = 50)
     private String descricao;
-
     @NotNull
     private NivelSkill nivel;
-
-    @NotNull
-    private Long idRecrutador;
-
     private Long idVaga;
     private Long idCandidatura;
 }
