@@ -27,7 +27,7 @@ public class SetorMapper {
         return new SetorResponse(
                 entity.getIdSetor(),
                 entity.getNome(),
-                entity.getRecrutador().getIdRecrutador()
+                entity.getRecrutador() != null ? entity.getRecrutador().getIdRecrutador() : null
         );
     }
 

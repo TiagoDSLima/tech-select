@@ -33,7 +33,6 @@ public class CandidaturaRequest {
     @NotNull
     private Integer exp;
 
-    @NotNull(message = "O arquivo do currículo é obrigatório")
     private MultipartFile urlCurriculo;
 
     @NotNull

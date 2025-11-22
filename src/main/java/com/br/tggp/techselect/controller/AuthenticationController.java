@@ -1,5 +1,6 @@
 package com.br.tggp.techselect.controller;
 
+import com.br.tggp.techselect.dto.LoginRequest;
 import com.br.tggp.techselect.dto.LoginResponse;
 import com.br.tggp.techselect.dto.RecrutadorRequest;
 import com.br.tggp.techselect.dto.RecrutadorResponse;
@@ -29,8 +30,8 @@ public class AuthenticationController {
     private final TokenService tokenService;
 
     @PostMapping("/login")
-    public ResponseEntity login(@RequestBody @Valid RecrutadorRequest recrutadorRequest){
-        var loginSenha = new UsernamePasswordAuthenticationToken(recrutadorRequest.getEmail(), recrutadorRequest.getSenha());
+    public ResponseEntity login(@RequestBody @Valid LoginRequest loginRequest){
+        var loginSenha = new UsernamePasswordAuthenticationToken(loginRequest.getEmail(), loginRequest.getSenha());
         var auth = authenticationManager.authenticate(loginSenha);
         Recrutador recrutador = (Recrutador) auth.getPrincipal();
         var token = tokenService.gerarToken(recrutador);

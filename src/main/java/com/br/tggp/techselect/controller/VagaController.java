@@ -27,8 +27,8 @@ public class VagaController {
 
     private final VagaService vagaService;
 
-    @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ResponseEntity<VagaResponse> criarVaga(@ModelAttribute @Valid VagaRequest vagaRequest) {
+    @PostMapping
+    public ResponseEntity<VagaResponse> criarVaga(@RequestBody @Valid VagaRequest vagaRequest) {
         VagaResponse vagaResponse = vagaService.cadastrarVaga(vagaRequest);
         return ResponseEntity.status(HttpStatus.CREATED).body(vagaResponse);
     }

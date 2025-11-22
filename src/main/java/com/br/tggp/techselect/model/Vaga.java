@@ -43,7 +43,7 @@ public class Vaga {
 
     @NotNull
     @Enumerated(EnumType.STRING)
-    @Column(name = "nivel", nullable = false)
+    @Column(name = "nivel", nullable = false, columnDefinition = "nivel_exp")
     private NivelExp nivel;
 
     @NotNull

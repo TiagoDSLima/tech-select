@@ -35,6 +35,11 @@ public class VagaService {
         }
 
         Vaga vaga = VagaMapper.toEntity(vagaRequest);
+
+        if (vaga.getSkills() != null) {
+            vaga.getSkills().forEach(skill -> skill.setVaga(vaga));
+        }
+
         return VagaMapper.toResponse(vagaRepository.save(vaga));
 
     }
@@ -47,6 +52,8 @@ public class VagaService {
         List<Vaga> vagas = vagaRepository.findByRecrutador_IdRecrutador(idRecrutador);
 
         List<VagaResponse> vagasResponse = VagaMapper.toListResponse(vagas);
+
+        return vagasResponse;
     }
 
     public VagaResponse atualizarVaga(VagaRequest vagaRequest, Long idVaga) {

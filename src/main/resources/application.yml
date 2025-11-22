@@ -2,7 +2,7 @@ spring:
   application:
     name:techselect
   datasource:
-    url: jdbc:postgresql://localhost:5555/techselect
+    url: jdbc:postgresql://localhost:5556/techselect
     username: postgres
     password: postgres
     driver-class-name: org.postgresql.Driver

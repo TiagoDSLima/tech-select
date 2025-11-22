@@ -48,7 +48,14 @@ public class CandidaturaMapper {
                 entity.getExp(),
                 entity.getUrlCurriculo(),
                 entity.getVaga().getIdVaga(),
-                skills
+                skills,
+                entity.getAptidao()
         );
+    }
+
+    public static List<CandidaturaResponse> toResponseList(List<Candidatura> entities) {
+        return entities.stream()
+                .map(CandidaturaMapper::toResponse)
+                .toList();
     }
 }

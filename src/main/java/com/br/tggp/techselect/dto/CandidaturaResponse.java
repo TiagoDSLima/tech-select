@@ -10,6 +10,7 @@ import java.util.List;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class CandidaturaResponse {
 
     private Long idCandidatura;
@@ -21,17 +22,4 @@ public class CandidaturaResponse {
     private Long idVaga;
     private List<SkillResponse> skills;
     private Apto apto;
-
-    public CandidaturaResponse(Long idCandidatura, String nomeCompleto, String email, String telefone,
-                               Integer exp, String urlCurriculo, Long idVaga,
-                               List<SkillResponse> skills) {
-        this.idCandidatura = idCandidatura;
-        this.nomeCompleto = nomeCompleto;
-        this.email = email;
-        this.telefone = telefone;
-        this.exp = exp;
-        this.urlCurriculo = urlCurriculo;
-        this.idVaga = idVaga;
-        this.skills = skills;
-    }
 }

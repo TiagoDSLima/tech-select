@@ -1,5 +1,6 @@
 package com.br.tggp.techselect.model;
 
+import com.br.tggp.techselect.enums.Apto;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -10,6 +11,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -54,9 +56,8 @@ public class Candidatura {
     @Column(name = "exp", nullable = false)
     private Integer exp;
 
-    @NotBlank
     @Size(max = 500)
-    @Column(name = "url_curriculo", nullable = false, length = 500)
+    @Column(name = "url_curriculo", length = 500)
     private String urlCurriculo;
 
     @NotNull
@@ -66,4 +67,7 @@ public class Candidatura {
 
     @OneToMany(mappedBy = "candidatura", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Skill> skills;
+
+    @Transient
+    private Apto aptidao;
 }

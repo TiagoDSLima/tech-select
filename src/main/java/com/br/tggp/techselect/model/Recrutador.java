@@ -50,9 +50,8 @@ public class Recrutador implements UserDetails {
     @Column(name = "nome_empresa", nullable = false, length = 100)
     private String nomeEmpresa;
 
-    @NotBlank
     @Size(max = 500)
-    @Column(name = "url_logo", nullable = false, length = 500)
+    @Column(name = "url_logo", length = 500)
     private String urlLogo;
 
     @NotBlank
@@ -65,9 +64,6 @@ public class Recrutador implements UserDetails {
 
     @OneToMany(mappedBy = "recrutador")
     private List<Vaga> vagas;
-
-    @OneToMany(mappedBy = "recrutador")
-    private List<Skill> skills;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
