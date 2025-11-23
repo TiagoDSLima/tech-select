@@ -8,7 +8,6 @@ import jakarta.validation.constraints.Size;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 

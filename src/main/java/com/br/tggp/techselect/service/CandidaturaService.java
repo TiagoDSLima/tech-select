@@ -16,7 +16,6 @@ import java.util.List;
 public class CandidaturaService {
 
     private final CandidaturaRepository candidaturaRepository;
-    private final MinioService minioService;
     private final RecrutadorService recrutadorService;
     private final AvaliadorDeCandidatura avaliadorDeCandidatura;
 

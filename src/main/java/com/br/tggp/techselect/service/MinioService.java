@@ -27,13 +27,4 @@ public class MinioService {
 
         return String.format("http://localhost:9100/%s/%s", BUCKET, nomeObjeto);
     }
-
-    public InputStream downloadArquivo(String nomeObjeto) throws Exception {
-        return minioClient.getObject(
-                GetObjectArgs.builder()
-                        .bucket(BUCKET)
-                        .object(nomeObjeto)
-                        .build()
-        );
-    }
 }

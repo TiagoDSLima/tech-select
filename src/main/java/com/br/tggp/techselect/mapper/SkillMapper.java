@@ -3,8 +3,6 @@ package com.br.tggp.techselect.mapper;
 import com.br.tggp.techselect.dto.SkillRequest;
 import com.br.tggp.techselect.dto.SkillResponse;
 import com.br.tggp.techselect.model.Candidatura;
-import com.br.tggp.techselect.model.Recrutador;
-import com.br.tggp.techselect.model.Setor;
 import com.br.tggp.techselect.model.Skill;
 import com.br.tggp.techselect.model.Vaga;
 

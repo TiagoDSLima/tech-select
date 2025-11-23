@@ -2,7 +2,6 @@ package com.br.tggp.techselect.service;
 
 import com.br.tggp.techselect.dto.VagaRequest;
 import com.br.tggp.techselect.dto.VagaResponse;
-import com.br.tggp.techselect.mapper.CandidaturaMapper;
 import com.br.tggp.techselect.mapper.SkillMapper;
 import com.br.tggp.techselect.mapper.VagaMapper;
 import com.br.tggp.techselect.model.Setor;
@@ -12,9 +11,7 @@ import com.br.tggp.techselect.repository.VagaRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -22,12 +19,6 @@ public class VagaService {
 
     private final VagaRepository vagaRepository;
     private final RecrutadorService recrutadorService;
-
-    public VagaResponse buscarVaga(Long idVaga){
-        return vagaRepository.findById(idVaga)
-                .map(VagaMapper::toResponse)
-                .orElseThrow(() -> new IllegalArgumentException("Vaga inexistente"));
-    }
 
     public VagaResponse cadastrarVaga(VagaRequest vagaRequest) {
         if(vagaRequest.getIdRecrutador() == null || !recrutadorService.existeRecrutador(vagaRequest.getIdRecrutador())) {

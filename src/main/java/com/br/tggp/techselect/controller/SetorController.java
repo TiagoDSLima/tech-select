@@ -2,11 +2,9 @@ package com.br.tggp.techselect.controller;
 
 import com.br.tggp.techselect.dto.SetorRequest;
 import com.br.tggp.techselect.dto.SetorResponse;
-import com.br.tggp.techselect.model.Setor;
 import com.br.tggp.techselect.service.SetorService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;

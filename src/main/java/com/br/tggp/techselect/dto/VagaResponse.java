@@ -1,7 +1,6 @@
 package com.br.tggp.techselect.dto;
 
 import com.br.tggp.techselect.enums.NivelExp;
-import com.br.tggp.techselect.enums.NivelSkill;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;

@@ -3,13 +3,10 @@ package com.br.tggp.techselect.mapper;
 import com.br.tggp.techselect.dto.CandidaturaRequest;
 import com.br.tggp.techselect.dto.CandidaturaResponse;
 import com.br.tggp.techselect.dto.SkillResponse;
-import com.br.tggp.techselect.enums.NivelSkill;
 import com.br.tggp.techselect.model.Candidatura;
 import com.br.tggp.techselect.model.Skill;
 import com.br.tggp.techselect.model.Vaga;
-
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class CandidaturaMapper {
 

@@ -1,7 +1,6 @@
 package com.br.tggp.techselect.dto;
 
 import com.br.tggp.techselect.enums.Apto;
-import com.br.tggp.techselect.model.Candidatura;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;

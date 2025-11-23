@@ -4,7 +4,6 @@ import com.br.tggp.techselect.dto.SetorRequest;
 import com.br.tggp.techselect.dto.SetorResponse;
 import com.br.tggp.techselect.mapper.SetorMapper;
 import com.br.tggp.techselect.model.Setor;
-import com.br.tggp.techselect.repository.RecrutadorRepository;
 import com.br.tggp.techselect.repository.SetorRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

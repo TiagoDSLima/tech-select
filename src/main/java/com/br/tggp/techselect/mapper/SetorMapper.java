@@ -4,8 +4,6 @@ import com.br.tggp.techselect.dto.SetorRequest;
 import com.br.tggp.techselect.dto.SetorResponse;
 import com.br.tggp.techselect.model.Recrutador;
 import com.br.tggp.techselect.model.Setor;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class SetorMapper {

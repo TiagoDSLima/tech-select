@@ -5,13 +5,10 @@ import com.br.tggp.techselect.dto.RecrutadorResponse;
 import com.br.tggp.techselect.mapper.RecrutadorMapper;
 import com.br.tggp.techselect.model.Recrutador;
 import com.br.tggp.techselect.repository.RecrutadorRepository;
-import io.minio.MinioClient;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import java.io.IOException;
 
 @Service
 @RequiredArgsConstructor

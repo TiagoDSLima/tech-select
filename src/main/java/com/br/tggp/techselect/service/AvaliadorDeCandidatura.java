@@ -6,7 +6,6 @@ import com.br.tggp.techselect.enums.NivelSkill;
 import com.br.tggp.techselect.model.Candidatura;
 import com.br.tggp.techselect.model.Skill;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service
