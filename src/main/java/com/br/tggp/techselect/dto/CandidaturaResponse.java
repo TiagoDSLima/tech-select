@@ -18,7 +18,6 @@ public class CandidaturaResponse {
     private String email;
     private String telefone;
     private Integer exp;
-    private String urlCurriculo;
     private Long idVaga;
     private List<SkillResponse> skills;
     private Apto apto;

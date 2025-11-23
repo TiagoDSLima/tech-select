@@ -46,7 +46,6 @@ public class CandidaturaMapper {
                 entity.getEmail(),
                 entity.getTelefone(),
                 entity.getExp(),
-                entity.getUrlCurriculo(),
                 entity.getVaga().getIdVaga(),
                 skills,
                 entity.getAptidao()

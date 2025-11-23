@@ -33,8 +33,6 @@ public class CandidaturaRequest {
     @NotNull
     private Integer exp;
 
-    private MultipartFile urlCurriculo;
-
     @NotNull
     private Long idVaga;
 

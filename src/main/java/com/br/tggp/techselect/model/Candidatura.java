@@ -56,10 +56,6 @@ public class Candidatura {
     @Column(name = "exp", nullable = false)
     private Integer exp;
 
-    @Size(max = 500)
-    @Column(name = "url_curriculo", length = 500)
-    private String urlCurriculo;
-
     @NotNull
     @ManyToOne
     @JoinColumn(name = "id_vaga", nullable = false)
