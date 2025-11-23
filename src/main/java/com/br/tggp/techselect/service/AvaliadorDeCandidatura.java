@@ -20,7 +20,7 @@ public class AvaliadorDeCandidatura {
 
         preencheSkills(candidatura);
         boolean naoPossuiObrigatorias = !skillsCandidatura.containsAll(skillsObrigatorias);
-        boolean naoTemExperienciaNecessaria = !(candidatura.getExp() < candidatura.getVaga().getExpMin());
+        boolean naoTemExperienciaNecessaria = candidatura.getExp() < candidatura.getVaga().getExpMin();
 
         if (naoPossuiObrigatorias) {
             return Apto.INAPTO;

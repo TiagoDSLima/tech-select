@@ -24,6 +24,11 @@ public class CandidaturaService {
     public CandidaturaResponse criarCandidatura(CandidaturaRequest candidaturaRequest){
         try {
             Candidatura candidatura = CandidaturaMapper.toEntity(candidaturaRequest);
+
+            if (candidatura.getSkills() != null) {
+                candidatura.getSkills().forEach(skill -> skill.setCandidatura(candidatura));
+            }
+
             return CandidaturaMapper.toResponse(candidaturaRepository.save(candidatura));
         } catch (Exception e) {
             throw new RuntimeException("Erro ao criar candidatura: ", e);
