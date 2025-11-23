@@ -40,8 +40,7 @@ public class VagaService {
             throw new IllegalArgumentException("Recrutador inexistente");
         }
 
-        List<Vaga> vagas = vagaRepository.findByRecrutador_IdRecrutador(idRecrutador);
-
+        List<Vaga> vagas = vagaRepository.findAllComRelacionamentosPorRecrutador(idRecrutador);
         List<VagaResponse> vagasResponse = VagaMapper.toListResponse(vagas);
 
         return vagasResponse;
