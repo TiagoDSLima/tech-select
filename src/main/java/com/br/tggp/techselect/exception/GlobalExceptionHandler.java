@@ -1,6 +1,8 @@
 package com.br.tggp.techselect.exception;
 
 import com.br.tggp.techselect.dto.ErroResponse;
+import com.br.tggp.techselect.exception.exceptions.EmailJaCadastradoException;
+import com.br.tggp.techselect.exception.exceptions.UploadLogoException;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +16,26 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<ErroResponse> handleIllegalArgument(IllegalArgumentException ex) {
+        ErroResponse erro = new ErroResponse(
+                ex.getMessage(),
+                HttpStatus.BAD_REQUEST.value(),
+                LocalDateTime.now()
+        );
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(erro);
+    }
+
+    @ExceptionHandler(EmailJaCadastradoException.class)
+    public ResponseEntity<ErroResponse> handleEmailException(EmailJaCadastradoException ex) {
+        ErroResponse erro = new ErroResponse(
+                ex.getMessage(),
+                HttpStatus.BAD_REQUEST.value(),
+                LocalDateTime.now()
+        );
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(erro);
+    }
+
+    @ExceptionHandler(UploadLogoException.class)
+    public ResponseEntity<ErroResponse> handleUploadLogoException(UploadLogoException ex) {
         ErroResponse erro = new ErroResponse(
                 ex.getMessage(),
                 HttpStatus.BAD_REQUEST.value(),
