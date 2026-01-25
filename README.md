@@ -11,7 +11,7 @@ O **TechSelect** é um sistema de **recrutamento e seleção** baseado em uma **
 
 ## 🛠️ Tecnologias Utilizadas
 
-![Java](https://img.shields.io/badge/Java-17-red?style=for-the-badge&logo=java)&nbsp;
+![Java](https://img.shields.io/badge/Java-21-red?style=for-the-badge&logo=java)&nbsp;
 ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3-brightgreen?style=for-the-badge&logo=springboot)&nbsp;
 ![Spring Security](https://img.shields.io/badge/Spring%20Security-Security-brightgreen?style=for-the-badge&logo=springsecurity)&nbsp;
 ![JWT](https://img.shields.io/badge/JWT-Authentication-black?style=for-the-badge&logo=jsonwebtokens)&nbsp;
